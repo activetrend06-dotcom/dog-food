@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TailWag Nutrition • Premium Dog Food</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap');
+        
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        
+        .heading-font {
+            font-family: 'Playfair Display', sans-serif;
+        }
+
+        .hero-bg {
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://picsum.photos/id/1015/2000/1200');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #f59e0b;
+            transform: translateY(-2px);
+        }
+
+        .product-card {
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        .section-header {
+            position: relative;
+        }
+        
+        .section-header:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: #f59e0b;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+<body class="bg-zinc-50 text-zinc-800">
+    <!-- Navbar -->
+    <nav class="bg-white border-b sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-amber-500 rounded-2xl flex items-center justify-center text-white text-2xl">
+                    🐾
+                </div>
+                <div>
+                    <span class="heading-font text-2xl font-bold tracking-tight">TailWag</span>
+                    <span class="text-amber-600 font-semibold">Nutrition</span>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#products" class="nav-link text-zinc-600 hover:text-amber-600">Products</a>
+                <a href="#benefits" class="nav-link text-zinc-600 hover:text-amber-600">Benefits</a>
+                <a href="#about" class="nav-link text-zinc-600 hover:text-amber-600">Our Story</a>
+                <a href="#testimonials" class="nav-link text-zinc-600 hover:text-amber-600">Reviews</a>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <button onclick="toggleCart()" 
+                        class="flex items-center gap-2 px-5 py-2.5 bg-white border border-zinc-200 hover:border-amber-300 rounded-2xl text-sm font-medium transition-colors">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span id="cart-count" class="font-mono">0</span>
+                </button>
+                <button onclick="window.location.href='#products'" 
+                        class="px-6 py-2.5 bg-amber-500 hover:bg-amber-600 text-white rounded-2xl text-sm font-semibold transition-all">
+                    Shop Now
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero-bg h-screen flex items-center text-white">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-6 py-2 rounded-3xl mb-8">
+                <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                <span class="text-sm font-medium tracking-widest">FRESH • NATURAL • VET APPROVED</span>
+            </div>
+            
+            <h1 class="heading-font text-7xl md:text-8xl font-bold leading-none mb-6 tracking-tighter">
+                Food that makes<br>tails wag harder
+            </h1>
+            
+            <p class="text-xl md:text-2xl max-w-lg mx-auto mb-10 text-white/90">
+                Premium, human-grade ingredients. 
+                Real meat. No fillers. Just pure joy for your dog.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#products" 
+                   class="px-10 py-5 bg-white text-amber-600 hover:bg-amber-100 font-semibold text-lg rounded-3xl inline-flex items-center justify-center gap-3 group">
+                    Browse Our Foods
+                    <span class="group-hover:translate-x-1 transition">→</span>
+                </a>
+                <button onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth' })"
+                        class="px-10 py-5 border-2 border-white/70 hover:bg-white/10 font-medium text-lg rounded-3xl">
+                    Learn More
+                </button>
+            </div>
+            
+            <div class="mt-16 flex justify-center gap-8 text-sm">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-shield-halved text-amber-400"></i>
+                    <span>100% Satisfaction</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-truck text-amber-400"></i>
+                    <span>Free Shipping $50+</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Products -->
+    <section id="products" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="px-4 py-2 bg-amber-100 text-amber-700 rounded-full text-sm font-medium">OUR RECIPES</span>
+                <h2 class="heading-font text-5xl font-bold mt-4">Made with love.<br>Powered by real ingredients.</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Product 1 -->
+                <div class="product-card bg-white border border-zinc-100 rounded-3xl overflow-hidden group">
+                    <div class="h-64 bg-zinc-100 flex items-center justify-center text-8xl relative">
+                        🥩
+                        <div class="absolute top-4 right-4 bg-green-500 text-white text-xs px-3 py-1 rounded-2xl font-medium">Bestseller</div>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-3">
+                            <div>
+                                <h3 class="text-2xl font-semibold">Beef &amp; Sweet Potato</h3>
+                                <p class="text-amber-600 font-medium">Adult Formula</p>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-3xl font-bold">$32</div>
+                                <div class="text-xs text-zinc-500">12 lbs</div>
+                            </div>
+                        </div>
+                        <p class="text-zinc-600 text-sm leading-relaxed mb-6">
+                            Grass-fed beef, sweet potatoes, carrots, and blueberries. 
+                            Perfect for active dogs who deserve the best.
+                        </p>
+                        <button onclick="addToCart(this)" 
+                                class="w-full py-4 bg-zinc-900 hover:bg-black text-white rounded-2xl text-sm font-semibold transition">
+                            ADD TO CART - $32
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card bg-white border border-zinc-100 rounded-3xl overflow-hidden group">
+                    <div class="h-64 bg-zinc-100 flex items-center justify-center text-8xl relative">
+                        🐟
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-3">
+                            <div>
+                                <h3 class="text-2xl font-semibold">Salmon &amp; Brown Rice</h3>
+                                <p class="text-amber-600 font-medium">Senior Formula</p>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-3xl font-bold">$35</div>
+                                <div class="text-xs text-zinc-500">12 lbs</div>
+                            </div>
+                        </div>
+                        <p class="text-zinc-600 text-sm leading-relaxed mb-6">
+                            Wild-caught salmon rich in omega-3s, perfect for joint health and shiny coats.
+                        </p>
+                        <button onclick="addToCart(this)" 
+                                class="w-full py-4 bg-zinc-900 hover:bg-black text-white rounded-2xl text-sm font-semibold transition">
+                            ADD TO CART - $35
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card bg-white border border-zinc-100 rounded-3xl overflow-hidden group">
+                    <div class="h-64 bg-zinc-100 flex items-center justify-center text-8xl relative">
+                        🐔
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-3">
+                            <div>
+                                <h3 class="text-2xl font-semibold">Chicken &amp; Pumpkin</h3>
+                                <p class="text-amber-600 font-medium">Puppy Formula</p>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-3xl font-bold">$29</div>
+                                <div class="text-xs text-zinc-500">12 lbs</div>
+                            </div>
+                        </div>
+                        <p class="text-zinc-600 text-sm leading-relaxed mb-6">
+                            Free-range chicken, pumpkin, spinach, and apples. 
+                            Gentle on sensitive tummies.
+                        </p>
+                        <button onclick="addToCart(this)" 
+                                class="w-full py-4 bg-zinc-900 hover:bg-black text-white rounded-2xl text-sm font-semibold transition">
+                            ADD TO CART - $29
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits -->
+    <section id="benefits" class="py-24 bg-zinc-900 text-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-16 items-center">
+                <div class="md:col-span-5">
+                    <div class="sticky top-24">
+                        <span class="text-amber-400 font-medium">WHY DOGS LOVE US</span>
+                        <h2 class="heading-font text-5xl font-bold leading-tight mt-3 mb-8">
+                            Real nutrition.<br>Real results.
+                        </h2>
+                        <p class="text-zinc-400 max-w-md">
+                            Every bag is packed with high-quality proteins and superfoods your dog will actually enjoy.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="md:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-8">
+                    <div class="bg-zinc-800/50 border border-zinc-700 rounded-3xl p-8">
+                        <div class="text-4xl mb-6">🥩</div>
+                        <h3 class="text-2xl font-semibold mb-2">Human-Grade Meat</h3>
+                        <p class="text-zinc-400">No by-products or mystery meats. Only the good stuff.</p>
+                    </div>
+                    <div class="bg-zinc-800/50 border border-zinc-700 rounded-3xl p-8">
+                        <div class="text-4xl mb-6">🌾</div>
+                        <h3 class="text-2xl font-semibold mb-2">Grain-Free Options</h3>
+                        <p class="text-zinc-400">Gentle on digestion. Packed with veggies and fruits.</p>
+                    </div>
+                    <div class="bg-zinc-800/50 border border-zinc-700 rounded-3xl p-8">
+                        <div class="text-4xl mb-6">🦴</div>
+                        <h3 class="text-2xl font-semibold mb-2">Joint &amp; Gut Health</h3>
+                        <p class="text-zinc-400">Glucosamine, probiotics, and omega fatty acids.</p>
+                    </div>
+                    <div class="bg-zinc-800/50 border border-zinc-700 rounded-3xl p-8">
+                        <div class="text-4xl mb-6">🏆</div>
+                        <h3 class="text-2xl font-semibold mb-2">Vet Formulated</h3>
+                        <p class="text-zinc-400">Backed by nutritionists who love dogs as much as you do.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="py-24">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="max-w-md mx-auto">
+                <div class="inline-flex w-24 h-24 bg-amber-100 rounded-3xl items-center justify-center text-6xl mb-8">🐶</div>
+                <h2 class="heading-font text-5xl font-bold mb-6">From our family to yours</h2>
+                <p class="text-lg text-zinc-600 leading-relaxed">
+                    TailWag Nutrition was started by a dog dad who got tired of mediocre kibble. 
+                    We source only the best ingredients and cook small batches so every dog gets food they deserve.
+                </p>
+                <div class="mt-12 flex justify-center gap-8 text-sm">
+                    <div class="text-center">
+                        <div class="text-4xl font-mono text-amber-500">500k+</div>
+                        <div class="text-zinc-500">Happy dogs</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-mono text-amber-500">4.98</div>
+                        <div class="text-zinc-500">Average rating</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-24 bg-amber-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-5xl font-bold">What dog parents say</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-3xl shadow-sm">
+                    <div class="flex gap-1 text-amber-400 mb-6">
+                        ★★★★☆
+                    </div>
+                    <p class="italic text-zinc-600">"My picky golden retriever finally eats without begging! The coat shine is unreal after just 3 weeks."</p>
+                    <div class="mt-8 flex items-center gap-4">
+                        <div class="w-10 h-10 bg-zinc-200 rounded-2xl"></div>
+                        <div>
+                            <div class="font-medium">Sarah M.</div>
+                            <div class="text-xs text-zinc-500">Mom to Bailey</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-3xl shadow-sm">
+                    <div class="flex gap-1 text-amber-400 mb-6">
+                        ★★★★★
+                    </div>
+                    <p class="italic text-zinc-600">"The difference in energy levels is night and day. This is the only brand my vet recommends now."</p>
+                    <div class="mt-8 flex items-center gap-4">
+                        <div class="w-10 h-10 bg-zinc-200 rounded-2xl"></div>
+                        <div>
+                            <div class="font-medium">Mike Torres</div>
+                            <div class="text-xs text-zinc-500">Dad to Max &amp; Luna</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-3xl shadow-sm">
+                    <div class="flex gap-1 text-amber-400 mb-6">
+                        ★★★★☆
+                    </div>
+                    <p class="italic text-zinc-600">"My senior lab's joints improved so much he plays like a puppy again. Thank you TailWag!"</p>
+                    <div class="mt-8 flex items-center gap-4">
+                        <div class="w-10 h-10 bg-zinc-200 rounded-2xl"></div>
+                        <div>
+                            <div class="font-medium">Elena Rodriguez</div>
+                            <div class="text-xs text-zinc-500">Mom to Duke</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 bg-gradient-to-br from-amber-500 to-orange-600 text-white">
+        <div class="max-w-2xl mx-auto text-center px-6">
+            <h2 class="heading-font text-5xl font-bold mb-6">Ready to spoil your best friend?</h2>
+            <p class="text-xl mb-10">Join thousands of happy dog parents getting better kibble delivered.</p>
+            <button onclick="window.location.href='#products'" 
+                    class="px-12 py-6 bg-white text-amber-600 text-xl font-semibold rounded-3xl hover:scale-105 transition">
+                Shop Our Collection →
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-zinc-900 text-zinc-400 py-20">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-12 gap-y-12">
+            <div class="md:col-span-5">
+                <div class="flex items-center gap-3 text-white mb-6">
+                    <div class="w-9 h-9 bg-amber-500 rounded-2xl flex items-center justify-center text-3xl">🐾</div>
+                    <span class="heading-font text-3xl font-bold tracking-tight">TailWag Nutrition</span>
+                </div>
+                <p class="max-w-xs">Premium dog food that makes every mealtime special.</p>
+                
+                <div class="mt-10 flex gap-6">
+                    <a href="#" class="hover:text-white"><i class="fa-brands fa-instagram text-2xl"></i></a>
+                    <a href="#" class="hover:text-white"><i class="fa-brands fa-facebook text-2xl"></i></a>
+                </div>
+            </div>
+            
+            <div class="md:col-span-2">
+                <h4 class="text-white font-medium mb-6">Shop</h4>
+                <div class="space-y-3 text-sm">
+                    <a href="#" class="block hover:text-white">All Products</a>
+                    <a href="#" class="block hover:text-white">Puppy</a>
+                    <a href="#" class="block hover:text-white">Adult</a>
+                    <a href="#" class="block hover:text-white">Senior</a>
+                </div>
+            </div>
+            
+            <div class="md:col-span-2">
+                <h4 class="text-white font-medium mb-6">Company</h4>
+                <div class="space-y-3 text-sm">
+                    <a href="#" class="block hover:text-white">Our Story</a>
+                    <a href="#" class="block hover:text-white">Ingredients</a>
+                    <a href="#" class="block hover:text-white">Sustainability</a>
+                    <a href="#" class="block hover:text-white">Blog</a>
+                </div>
+            </div>
+            
+            <div class="md:col-span-3">
+                <h4 class="text-white font-medium mb-6">Get in touch</h4>
+                <div class="text-sm space-y-3">
+                    <a href="mailto:hello@tailwag.nutrition" class="block hover:text-white">hello@tailwag.nutrition</a>
+                    <div class="pt-4">
+                        <p class="text-xs">© 2026 TailWag Nutrition. All rights reserved.</p>
+                        <p class="text-xs mt-1">Made with ❤️ for dogs everywhere.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Simple Cart Modal -->
+    <div id="cart-modal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-[100]">
+        <div class="bg-white rounded-3xl max-w-md w-full mx-4 max-h-[90vh] overflow-hidden">
+            <div class="p-8 border-b flex items-center justify-between">
+                <h3 class="text-2xl font-semibold">Your Cart</h3>
+                <button onclick="toggleCart()" class="text-3xl leading-none text-zinc-400 hover:text-zinc-600">×</button>
+            </div>
+            <div id="cart-items" class="p-8 max-h-[400px] overflow-auto space-y-6">
+                <!-- Filled by JS -->
+            </div>
+            <div class="p-8 border-t bg-zinc-50">
+                <div class="flex justify-between text-lg font-medium mb-6">
+                    <span>Total</span>
+                    <span id="cart-total">$0.00</span>
+                </div>
+                <button onclick="checkout()" 
+                        class="w-full py-5 bg-amber-500 hover:bg-amber-600 text-white rounded-2xl font-semibold">
+                    Proceed to Checkout
+                </button>
+                <p class="text-center text-xs text-zinc-500 mt-4">Free shipping on orders over $50</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tailwind script already included via CDN
+        
+        let cart = [];
+        
+        function addToCart(btn) {
+            const productName = btn.parentElement.parentElement.querySelector('h3').textContent;
+            const price = parseFloat(btn.textContent.match(/\d+/)[0]);
+            
+            cart.push({
+                name: productName,
+                price: price
+            });
+            
+            updateCartCount();
+            
+            // Simple feedback
+            const originalText = btn.textContent;
+            btn.textContent = "ADDED ✓";
+            btn.style.backgroundColor = "#166534";
+            
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.style.backgroundColor = "";
+            }, 1500);
+        }
+        
+        function updateCartCount() {
+            document.getElementById('cart-count').textContent = cart.length;
+        }
+        
+        function toggleCart() {
+            const modal = document.getElementById('cart-modal');
+            modal.classList.toggle('hidden');
+            
+            if (!modal.classList.contains('hidden')) {
+                renderCart();
+            }
+        }
+        
+        function renderCart() {
+            const container = document.getElementById('cart-items');
+            container.innerHTML = '';
+            
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 text-zinc-400">
+                        <div class="text-6xl mb-4">🛒</div>
+                        <p>Your cart is empty</p>
+                    </div>
+                `;
+                document.getElementById('cart-total').textContent = '$0';
+                return;
+            }
+            
+            let total = 0;
+            
+            cart.forEach((item, index) => {
+                total += item.price;
+                const div = document.createElement('div');
+                div.className = "flex justify-between items-center";
+                div.innerHTML = `
+                    <div>
+                        <div class="font-medium">${item.name}</div>
+                        <div class="text-sm text-zinc-500">12 lbs bag</div>
+                    </div>
+                    <div class="text-right">
+                        <div class="font-semibold">$${item.price}</div>
+                        <button onclick="removeFromCart(${index})" class="text-red-500 text-xs hover:underline mt-1">remove</button>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+            
+            document.getElementById('cart-total').textContent = `$${total}`;
+        }
+        
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            renderCart();
+            updateCartCount();
+        }
+        
+        function checkout() {
+            if (cart.length === 0) return;
+            alert("Thank you for shopping at TailWag! 🐾\n\n(This is a demo website. In a real store this would connect to Stripe or similar.)");
+            cart = [];
+            toggleCart();
+            updateCartCount();
+        }
+        
+        // Keyboard escape support
+        document.addEventListener('keydown', function(e) {
+            if (e.key === "Escape") {
+                const modal = document.getElementById('cart-modal');
+                if (!modal.classList.contains('hidden')) toggleCart();
+            }
+        });
+        
+        // Initialize
+        console.log('%c🐶 TailWag Nutrition demo ready!', 'color:#f59e0b; font-family:monospace');
+    </script>
+</body>
+</html>
